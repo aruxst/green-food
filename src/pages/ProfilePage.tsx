@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import ListBox from "../components/ListBox";
 import ProfileInformationPage from "./ProfileInformationPage";
-import ChangePasswordPage from "./ChangePasswordPage";
-import MyItemsPage from "./MyItemsPage";
 import {useAuth} from "../hooks/useAuth";
+import AddItem from "./AddItem";
+import WishlistPage from "./WishlistPage";
+import MyOrdersPage from "./MyOrdersPage";
 
-export type ActiveSection = 'profile' | 'lost' | 'found' | 'logout' | 'changePassword';
+export type ActiveSection = 'profile' | 'logout' | 'addCategory' | 'wishlist' | 'addItem' | 'itemsControl' | 'myOrders';
 
 function ProfilePage() {
     const [activeSection, setActiveSection] = useState<ActiveSection>('profile');
@@ -23,8 +24,9 @@ function ProfilePage() {
             </div>
             <div className="w-4/5">
                 {activeSection === 'profile' && (<ProfileInformationPage />)}
-                {(activeSection === 'lost' || activeSection === 'found') && (<MyItemsPage activeSection={activeSection}/>)}
-                {activeSection === 'changePassword' && (<ChangePasswordPage />)}
+                {activeSection === 'addItem' && (<AddItem />)}
+                {activeSection === 'myOrders' && (<MyOrdersPage />)}
+                {activeSection === 'wishlist' && (<WishlistPage />)}
             </div>
         </div>
     )

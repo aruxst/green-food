@@ -2,9 +2,11 @@ import React, {useEffect, useRef, useState} from 'react';
 import MyLink from "./ui/MyLink";
 import MyButton from "./ui/MyButton";
 import {useUserData} from "../api/userDataApi";
-import {CircularProgress} from "@nextui-org/react";
+import {CircularProgress, useSelect} from "@nextui-org/react";
 import {useCustomParams} from "../hooks/useCustomParams";
 import {useNavigate} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {RootState} from "../store/store";
 
 function Header() {
     const inputRef = useRef<HTMLInputElement>(null);
@@ -13,12 +15,13 @@ function Header() {
     const navigate = useNavigate()
     const [isInputOpen, setIsInputOpen] = useState<boolean>(!!customParam.getQueryFromParam())
     const [searchText, setSearchText] = useState<string>(customParam.getQueryFromParam())
+    const user = useSelector((state: RootState) => state.user.user);
 
     const toggleOpenInput = (): void => {
         if (!(isInputOpen && searchText !== '')) {
             setIsInputOpen(!isInputOpen)
         }
-            submitSearch()
+        submitSearch()
         if (inputRef.current) {
             inputRef.current.focus();
         }
@@ -35,6 +38,7 @@ function Header() {
 
     useEffect(() => {
         setSearchText(customParam.getQueryFromParam())
+        // console.log(user)
     }, [customParam.searchParams]);
 
     return (
@@ -50,8 +54,8 @@ function Header() {
                         </MyLink>
                     </li>
                     <li>
-                        <MyLink className="text-black" to={`/add-item`}>
-                            Add Item
+                        <MyLink className="text-black" to={`/basket`}>
+                            My Basket
                         </MyLink>
                     </li>
                     <li>
@@ -72,9 +76,9 @@ function Header() {
                     <img src="/icons/search.svg" alt="search"/>
                 </button>
                 <MyButton color="primary" className="flex justify-center items-center h-8 px-5"
-                    onClick={() => navigate("/profile")}>
+                          onClick={() => navigate("/profile")}>
                     <img className="w-4" src="/icons/profileIcon.svg" alt="profile"/>
-                    <p className="">{userData.data?.firstName} {userData.data?.lastName}</p>
+                    <p className="hidden md:inline">{userData.data?.firstName} {userData.data?.lastName}</p>
                     {userData.isLoading && <CircularProgress color="secondary" size={'sm'} aria-label="Loading..."/>}
                 </MyButton>
             </div>

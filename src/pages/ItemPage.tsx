@@ -21,7 +21,6 @@ function ItemPage() {
                 {itemsQuery.isSuccess && <ImageViewer images={itemsQuery.data.images}/>}
             </div>
             <div className="w-1/2">
-                <h1 className={`text-md text-primary font-bold`}>#LOST</h1>
                 <ItemAllInfo itemQuery={itemsQuery} />
             </div>
         </div>

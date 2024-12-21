@@ -8,12 +8,14 @@ export const getAllItemsApi = async (page: string,
                                      size: string,
                                      sortBy: string,
                                      priceRange: number[],
-                                     type: string
+                                     type: string,
+                                     query: string
 ) => {
     const params = new URLSearchParams({
         page,
         category,
         size,
+        query,
         sortBy: `${sortBy}${(type === 'new') ? '+new-arrivals' : ''}`,
         minPrice: priceRange[0].toString(),
         maxPrice: priceRange[1].toString(),
@@ -36,6 +38,8 @@ export const useGetAllItems = () => {
         customParams.getSizeFromParam(),
         customParams.getSortTypeFromParam(),
         customParams.getPriceRangeFromParam(),
-        customParams.getTypeFromParam()
+        customParams.getTypeFromParam(),
+        customParams.getQueryFromParam(),
+
     ));
 };

@@ -1,21 +1,33 @@
-
 import {Skeleton} from "@nextui-org/react";
 import {useNavigate} from "react-router-dom";
 import React, {useState} from "react";
 import {Item} from "../models/Item";
-import {FaAngleLeft, FaAngleRight} from "react-icons/fa";
+import {FaAngleLeft, FaAngleRight, FaHeart} from "react-icons/fa";
 import MyImage from "./ui/MyImage";
+import {SlBasket} from "react-icons/sl";
+import {useAddToWishlist} from "../api/addToWishlist";
+import {useSelector} from "react-redux";
+import {RootState} from "../store/store";
+import {IUser} from "../models/IUser";
+import {CiHeart} from "react-icons/ci";
+import {useRemoveFromWishlist} from "../api/wishlist/removeFromWishlist";
+import {useAddWishlist} from "../api/wishlist/addWishlistApi";
+import {WishlistResponse} from "../models/WishlistResponse";
 
 interface Props {
     item: Item;
     isMyItem?: boolean
-    deleteItem?: (id:string) => void,
-    updateUserData?: () => void
+    deleteButton?: boolean
+    onDelete?: () => void
+    wishlist?: WishlistResponse
 }
 
-function ItemCard({item, isMyItem = false, deleteItem = () => {}, updateUserData = ()  => {}}: Props) {
+function ItemCard({item, isMyItem = false, wishlist}: Props) {
     const [mainImage, setMainImage] = useState(0)
     const navigate = useNavigate();
+    const user: IUser | null = useSelector((state: RootState) => state.user.user)
+    const {mutate: removeFromWishlist, ...removeFromWishlistReq} = useRemoveFromWishlist()
+    const {mutate: addToWishlist, ...addToWishlistReq} = useAddWishlist()
 
 
     const goToItemPage = () => {
@@ -27,19 +39,26 @@ function ItemCard({item, isMyItem = false, deleteItem = () => {}, updateUserData
     };
     const handleDeleteClick = (id: string, event: React.MouseEvent) => {
         event.stopPropagation();
-
+    }
+    const handleAddBasketClick = (id: string, event: React.MouseEvent) => {
+        event.stopPropagation();
+    };
+    const handleLikeClick = (id: string, event: React.MouseEvent) => {
+        event.stopPropagation();
+        addToWishlist(id)
     }
     return (
-        <div className={`flex flex-col w-full h-full cursor-pointer rounded hover:bg-neutral-100 transition p-2`}
-             onClick={() => {
-                 goToItemPage()
-             }}>
+        <div
+            className={`flex flex-col w-full h-full cursor-pointer rounded group hover:bg-neutral-100 transition p-2 max-w-[300px]`}
+            onClick={() => {
+                goToItemPage()
+            }}>
             <div className="w-full h-full mb-8  flex justify-center items-center relative">
                 <div className="relative w-full aspect-square">
                     {item.images.length > 0
                         ? <MyImage
                             className="w-full h-full object-cover z-0"
-                            src={`${process.env.REACT_APP_API_URL}/${item.images[mainImage]}`}
+                            src={`${item.images[mainImage]}`}
                             alt="Item image"
                         /> : <img
                             className="w-full h-full object-cover z-0"
@@ -69,13 +88,33 @@ function ItemCard({item, isMyItem = false, deleteItem = () => {}, updateUserData
                     disabled={mainImage === item.images.length - 1 || item.images.length === 0}>
                     <FaAngleRight/>
                 </button>
+
+                {/*<div className="opacity-0 flex gap-2 transition absolute bottom-0 group-hover:opacity-100 mb-1">*/}
+                {/*    <div*/}
+                {/*        className="bg-[#fbfbfb] hover:bg-neutral-200 transition rounded-sm py-1 px-2 flex justify-center items-center"*/}
+                {/*        onClick={(event) => {*/}
+                {/*            handleAddBasketClick(item.id, event)*/}
+                {/*        }}*/}
+                {/*    >*/}
+                {/*        <SlBasket className={`text-primary text-xl`}/>*/}
+                {/*    </div>*/}
+                {/*    <div*/}
+                {/*        className="bg-[#fbfbfb] hover:bg-neutral-200 transition rounded-sm py-1 px-2 flex justify-center items-center"*/}
+                {/*        onClick={(event) => {*/}
+                {/*            handleLikeClick(item.id, event)*/}
+                {/*        }}>{*/}
+                {/*        <FaHeart className={`text-red-500 text-xl fill-red-500`}/>*/}
+                {/*        // <CiHeart className={`text-red-500 text-xl fill-red-500`}/>*/}
+                {/*    }</div>*/}
+                {/*</div>*/}
             </div>
             <p className={`font-bold text-xl mt-auto`}>{item.title}</p>
             <p className={`font-semibold text-primary text-md mt-auto`}>${item.cost}.00</p>
-            {isMyItem && <button className={`bg-red-600 mt-2 rounded text-white px-4 py-1 transition hover:bg-red-700 disabled:hidden`}
-			                     onClick={(e) => {
-                                     handleDeleteClick(item.id, e)
-                                 }}
+            {isMyItem && <button
+				className={`bg-red-600 mt-2 rounded text-white px-4 py-1 transition hover:bg-red-700 disabled:hidden`}
+				onClick={(e) => {
+                    handleDeleteClick(item.id, e)
+                }}
 			>Delete</button>}
         </div>
     );
@@ -83,7 +122,7 @@ function ItemCard({item, isMyItem = false, deleteItem = () => {}, updateUserData
 
 function SkeletonCard() {
     return (
-        <div className="w-full space-y-5 p-4 rounded-lg">
+        <div className="w-full space-y-5 p-4 rounded-lg max-w-[300px]">
             <Skeleton className="rounded-lg">
                 <div className="h-[200px] w-full rounded-lg bg-secondary"></div>
             </Skeleton>

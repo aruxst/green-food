@@ -4,7 +4,63 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb6a87ad-c57d-414b-bf97-3b953d107643" name="Changes" comment="fix delete user item" />
+    <list default="true" id="bb6a87ad-c57d-414b-bf97-3b953d107643" name="Changes" comment="fix delete user item">
+      <change afterPath="$PROJECT_DIR$/public/icons/OrderVector.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/addToWishlist.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/basket/addBasketApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/basket/clearBasket.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/basket/getBasketApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/basket/removeFromBasketApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/order/addOrder.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/order/getUserOrders.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/shiping/addShippingApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/wishlist/addWishlistApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/wishlist/getWishlistApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/wishlist/removeFromWishlist.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/BuySection.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useBasket.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useWishlist.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/Order.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/Size.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/WishlistResponse.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/basket.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/response/AddBasketResponse.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/BasketPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/BasketReviewPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/BillingAddressPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/MyOrdersPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/WishlistPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Layout/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Layout/Layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/Api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/Api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/deleteFoundItemApi.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/deleteLostItemApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/deleteItemApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/getAllItemsApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/getAllItemsApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/updateCredentialsApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/updateCredentialsApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/userDataApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/userDataApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ImageViewer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ImageViewer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ItemAllInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ItemAllInfo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ItemCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ItemCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Items.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Items.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ListBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ListBox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ShowItemsGrid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ShowItemsGrid.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/forms/UpdateCredentialsForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/forms/UpdateCredentialsForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/MyButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/MyButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/MyImage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/MyImage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/MyMiniImage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/MyMiniImage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useCustomParams.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useCustomParams.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useToast.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Item.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Item.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/response/GetItemResponse.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/response/GetItemResponse.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/AddItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/AddItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/HomePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/HomePage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ItemPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ItemPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyItemsPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyItemsPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ProfilePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ProfilePage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,6 +81,10 @@
     &quot;accountId&quot;: &quot;e29362eb-81d8-4f15-bff9-8193f38b8bd9&quot;
   }
 }</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
@@ -36,21 +96,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/Users/nurmakhanbetkenes/Desktop/MineFolder/Projects/green-shop/green-shop-front/public/icons",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/Users/nurmakhanbetkenes/Desktop/MineFolder/Projects/green-shop/green-shop-front/node_modules/typescript/lib"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/nurmakhanbetkenes/Desktop/MineFolder/Projects/green-shop/green-food/public/icons&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/nurmakhanbetkenes/Desktop/MineFolder/Projects/green-shop/green-food/node_modules/typescript/lib&quot;
   },
-  "keyToStringList": {
-    "ChangesTree.GroupingKeys": [
-      "directory"
+  &quot;keyToStringList&quot;: {
+    &quot;ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -63,8 +124,8 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/icons" />
-      <recent name="$PROJECT_DIR$/src/api/auth" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/api/auth" />
       <recent name="$PROJECT_DIR$/src/api" />
       <recent name="$PROJECT_DIR$/src/fonts/ceraPro" />
     </key>
@@ -390,16 +451,10 @@
     <option name="OPEN_GENERIC_TABS">
       <map>
         <entry key="5f90a234-7dcf-4ce4-a76a-bbecf37160a3" value="TOOL_WINDOW" />
-        <entry key="584a6ec0-8a94-45bc-9225-f26915c19583" value="TOOL_WINDOW" />
       </map>
     </option>
     <option name="TAB_STATES">
       <map>
-        <entry key="584a6ec0-8a94-45bc-9225-f26915c19583">
-          <value>
-            <State />
-          </value>
-        </entry>
         <entry key="5f90a234-7dcf-4ce4-a76a-bbecf37160a3">
           <value>
             <State />

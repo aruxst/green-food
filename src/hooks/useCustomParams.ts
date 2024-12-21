@@ -127,11 +127,12 @@ export const useCustomParams = () => {
         setSearchParams(searchParams);
     };
 
-
-
     const resetAllParams = () => {
-        setSearchParams({});
-    }
+        setSearchParams({
+            type: "all",
+            "sortBy": "price-desc"
+        });
+    };
 
     return {
         searchParams,

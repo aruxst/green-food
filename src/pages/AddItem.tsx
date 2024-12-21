@@ -41,7 +41,7 @@ function AddItem() {
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files) {
-            if (e.target.files.length + images.length > 10) {  // Corrected max images to 10
+            if (e.target.files.length + images.length > 10) {
                 alert("You can choose only up to 10 images");
                 return;
             }
@@ -239,7 +239,7 @@ function AddItem() {
                             multiple
                             onChange={handleImageChange}
                             className="mt-2"
-                            disabled={images.length >= 10}  // Adjusted to 10 max images
+                            disabled={images.length >= 10}
                         />
                         {images.length >= 10 && <span className="text-red-500 text-sm">Maximum 10 images allowed.</span>}
                     </div>

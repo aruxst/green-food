@@ -6,7 +6,12 @@ import {ActiveSection} from "../pages/ProfilePage";
 import React, {useEffect} from "react";
 import {RiLockPasswordLine} from "react-icons/ri";
 import {FaPeopleCarryBox} from "react-icons/fa6";
-import {FaSearch} from "react-icons/fa";
+import {FaHeart, FaSearch} from "react-icons/fa";
+import {useSelector} from "react-redux";
+import {RootState} from "../store/store";
+import {FiBox} from "react-icons/fi";
+import {IoAddCircleOutline} from "react-icons/io5";
+import {GrUnorderedList} from "react-icons/gr";
 
 interface Props {
     variant: string;
@@ -14,6 +19,7 @@ interface Props {
 }
 
 export default function ListBox({variant, setVariants}: Props) {
+    const user = useSelector((state: RootState) => state.user.user);
     const iconClasses = "text-xl text-default-500 pointer-events-none flex-shrink-0";
 
     useEffect(() => {
@@ -30,40 +36,37 @@ export default function ListBox({variant, setVariants}: Props) {
                 <CgProfile className={iconClasses}/>
                 Profile
             </button>
-            <div className={`rounded transition ${(variant === 'lost' || variant === 'found') && 'bg-neutral-200'}`}>
-                <Accordion className={`p-0`}
-                           itemClasses={{
-                               title: "font-normal text-medium",
-                               trigger: "w-full p-2 gap-2 h-auto data-[hover=true]:bg-white rounded flex items-center",
-                           }}
-                >
-                    <AccordionItem key="1" aria-label="My items" title="My items"
-                                   startContent={<CiBoxList className={iconClasses}/>}
-                                   className={`flex flex-col w-full p-0 transition rounded `}
-                    >
-                        <div className="w-full flex flex-col gap-2 h-full">
-                            <button
-                                className={`flex items-center gap-2 p-2 hover:bg-white transition rounded ${variant === 'lost' && 'bg-white'}`}
-                                onClick={() => setVariants("lost")}>
-                                <FaSearch className={iconClasses}/>
-                                Lost Items
-                            </button>
-                            <button
-                                className={`flex items-center gap-2 p-2 hover:bg-white transition rounded ${variant === 'found' && 'bg-white'}`}
-                                onClick={() => setVariants("found")}>
-                                <FaPeopleCarryBox className={iconClasses}/>
-                                Found Items
-                            </button>
-                        </div>
-                    </AccordionItem>
-                </Accordion>
-            </div>
             <button
-                className={`flex items-center gap-2 p-2 hover:bg-white transition rounded ${variant === 'changePassword' && 'bg-white'}`}
-                onClick={() => setVariants("changePassword")}>
-                <RiLockPasswordLine className={iconClasses}/>
-                Change Password
+                className={`flex items-center gap-2 p-2 hover:bg-white transition rounded ${variant === 'wishlist' && 'bg-white'}`}
+                onClick={() => setVariants("wishlist")}>
+                <FaHeart  className={iconClasses}/>
+                Wishlist
             </button>
+            <button
+                className={`flex items-center gap-2 p-2 hover:bg-white transition rounded ${variant === 'myOrders' && 'bg-white'}`}
+                onClick={() => setVariants("myOrders")}>
+                <GrUnorderedList className={iconClasses}/>
+                My Orders
+            </button>
+
+            {
+                !!user && user.role === 'admin' && (
+                    <>
+                        <button
+                            className={`flex items-center gap-2 p-2 hover:bg-white transition rounded ${variant === 'itemsControl' && 'bg-white'}`}
+                            onClick={() => setVariants("itemsControl")}>
+                            <FiBox className={iconClasses}/>
+                            Items Controller
+                        </button>
+                        <button
+                            className={`flex items-center gap-2 p-2 hover:bg-white transition rounded ${variant === 'addItem' && 'bg-white'}`}
+                            onClick={() => setVariants("addItem")}>
+                            <IoAddCircleOutline className={iconClasses}/>
+                            Add item
+                        </button>
+                    </>
+                )
+            }
             <button className={`flex items-center gap-2 p-2 hover:bg-danger group hover:text-white transition rounded`}
                     onClick={() => setVariants("logout")}>
                 <CiLogout className={cn(iconClasses, `transition text-danger group-hover:text-white`)}/>

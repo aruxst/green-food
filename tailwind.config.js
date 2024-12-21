@@ -11,6 +11,7 @@ module.exports = {
 			colors: {
 				primary: '#46A358',
 				secondary: '#fafafa',
+				'text-color':'#3D3D3D'
 			},
 			fontFamily: {
 				'cera': ['"Cera Pro Regular"', 'sans-serif'],

@@ -1,37 +1,46 @@
-import {useAuth} from "../hooks/useAuth";
+
 import {useMutation} from "react-query";
+import {RegisterResponse} from "../models/response/RegisterResponse";
+import api from "./Api";
 
 export type UpdateCredentialsBody = {
-    name: string,
-    surname: string
+    firstName: string,
+    lastName: string,
+    email: string,
+    password?: string,
+    currentPassword?: string,
+    phoneNumber?: string,
+    profilePicture?: File
 }
 
-const updateCredentials = async (data: UpdateCredentialsBody,token: string):Promise<any> => {
-    const url = `${process.env.REACT_APP_API_URL}/api/profile/changecredentials`;
+const updateProfile = async (data: UpdateCredentialsBody) => {
+    console.log(data)
+    const formData = new FormData();
 
-    const response = await fetch(url, {
-        method: 'PUT',
-        headers:{
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify({
-            name: data.name,
-            surname: data.surname,
-        })
-    })
-    const json = await response.json();
-
-    if (!response.ok) {
-        throw new Error(`Failed to fetch update Credentials data ${json.message ?? response.statusText}`);
+    formData.append("firstName", data.firstName);
+    formData.append("lastName", data.lastName);
+    formData.append("email", data.email);
+    if (data.phoneNumber) formData.append("phoneNumber", data.phoneNumber);
+    if (data.profilePicture) {
+        console.log("Profile picture:", data.profilePicture);
+        formData.append("profilePicture", data.profilePicture);
     }
+    if (data.password) formData.append("password", data.password);
+    if (data.currentPassword) formData.append("currentPassword", data.currentPassword);
 
-    return json
 
+    try {
+        const response = await api.put(`/users/update-profile`, formData,{
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        })
+        return response.data;
+    } catch (error: any) {
+        throw new Error(error.response?.data?.detail || "Register failed");
+    }
 }
 
-export const useUpdateCredentials = () => {
-    const {token} = useAuth()
-
-    return useMutation((data: UpdateCredentialsBody) => updateCredentials(data,  token))
+export const useUpdateProfile = () => {
+    return useMutation((data: UpdateCredentialsBody) => updateProfile(data))
 }

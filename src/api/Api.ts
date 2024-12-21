@@ -28,4 +28,5 @@ api.interceptors.response.use((config) => {
         console.log("40001",res.data)
     }
 })
+
 export default api

@@ -1,6 +1,5 @@
 import React from "react";
 import {useUserData} from "../api/userDataApi";
-import ShowItemsGrid from "../components/ShowItemsGrid";
 import {CircularProgress} from "@nextui-org/react";
 import {ItemType} from "../types/itemTypes";
 

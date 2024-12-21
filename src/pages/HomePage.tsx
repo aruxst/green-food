@@ -40,28 +40,31 @@ function HomePage() {
 
     return (
         <>
-            <div className=" w-full flex items-start">
-                <div className="w-1/5 px-5 flex flex-col gap-6 min-w-[300px]">
+            <div className="w-full flex items-start">
+                <div className="w-1/5 px-5 hidden md:flex flex-col gap-6 min-w-[300px]">
                     <CategoriesList/>
                     <PriceRange />
                     <SizesList />
                 </div>
-                <div className="w-4/5 pl-8 flex flex-col">
+                <div className="w-full md:w-4/5 md:pl-8 flex flex-col">
                     <div className="flex justify-between">
-                        <div className="flex gap-2">
-                            <button className="px-2 py-2 " onClick={() => handleSetSubPage("all")}>
-                                <h3 className={`border-b-3 flex items-center gap-1 px-1 ${subPage === 'all' ? 'border-primary text-primary font-bold' : 'border-white'}`}>
-                                    All Plants
-                                </h3>
-                            </button>
-                            <button className="px-2 py-2" onClick={() => handleSetSubPage("new")}>
-                                <h3 className={`border-b-3 flex items-center gap-1 px-1 ${subPage === 'new' ? 'border-primary text-primary font-bold' : 'border-white'}`}>
-                                    New Arrivals
-                                </h3>
-                            </button>
+                        <div className="flex w-full gap-2 justify-center md:justify-start">
+                            <div className="flex gap-2">
+                                <button className="px-2 py-2 " onClick={() => handleSetSubPage("all")}>
+                                    <h3 className={`border-b-3 flex items-center gap-1 px-1 ${subPage === 'all' ? 'border-primary text-primary font-bold' : 'border-white'}`}>
+                                        All Plants
+                                    </h3>
+                                </button>
+                                <button className="px-2 py-2" onClick={() => handleSetSubPage("new")}>
+                                    <h3 className={`border-b-3 flex items-center gap-1 px-1 ${subPage === 'new' ? 'border-primary text-primary font-bold' : 'border-white'}`}>
+                                        New Arrivals
+                                    </h3>
+                                </button>
+                            </div>
+                            <div className="w-[30px] h-[30px] bg-primary opacity-30s rounded-xl md:hidden"></div>
                         </div>
-                        <div className="flex gap-2">
-                            <div className="w-60">
+                        <div className={`gap-2 md:flex`}>
+                            <div className={`w-60 ${subPage === 'new' ? 'hidden' : ''}`}>
                                 <Select
                                     items={sorts}
                                     placeholder="Select sorting"
@@ -74,8 +77,8 @@ function HomePage() {
                         </div>
                     </div>
 
-                    <div className="pl-4 ">
-                        <Items/>
+                    <div className="py-2">
+                    <Items/>
                     </div>
 
                 </div>

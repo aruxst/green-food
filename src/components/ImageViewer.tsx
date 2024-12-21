@@ -15,7 +15,7 @@ function ImageViewer({images}: Props) {
             <div className="w-1/5 flex flex-col gap-4">
                 {images.map((image, index) => (
                     <MyMiniImage key={index} src={`${imageUrl}/${image}`}
-                                 className={`cursor-pointer ${mainImageId === index && 'border-blue-500 border-2'}`}
+                                 className={`cursor-pointer aspect-square ${mainImageId === index && 'border-primary border-2'}`}
                                  onClick={() => setMainImageId(index)}/>
                 ))}
             </div>

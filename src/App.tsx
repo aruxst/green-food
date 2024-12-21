@@ -13,8 +13,22 @@ import {Toaster} from "sonner";
 import VerifyPage from "./pages/VerifyPage";
 import {Provider} from "react-redux";
 import {store} from "./store/store";
+import {useEffect} from "react";
+import BasketPage from "./pages/BasketPage";
 
 function App() {
+    useEffect(() => {
+        const originalWarn = console.warn;
+        console.warn = (...args) => {
+            if (typeof args[0] === 'string' && args[0].includes('aria')) {
+                return;
+            }
+            originalWarn(...args);
+        };
+        return () => {
+            console.warn = originalWarn;
+        };
+    }, []);
     return (
         <Provider store={store}>
             <QueryClientProvider client={queryClient}>
@@ -28,10 +42,9 @@ function App() {
                                 <Route path="/" element={<Layout/>}>
                                     <Route index element={<HomePage/>}/>
                                     <Route path="/item/:id" element={<ItemPage/>}/>
-                                    <Route path="/add-item" element={<AddItem/>}/>
                                     <Route path="/support" element={<div>Support</div>}/>
                                     <Route path="/profile" element={<ProfilePage/>}/>
-
+                                    <Route path="/basket" element={<BasketPage/>}/>
                                 </Route>
                             </Route>
 
